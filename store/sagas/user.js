@@ -1,24 +1,21 @@
-import { response } from 'express'
-import { all } from 'express/lib/application'
 import { call, delay, put, takeLatest } from 'redux-saga/effects'
 import * as T from "../types"
 
 
-
-function* addUser(action){
+function* login(action){
     try{
-        const newUser = yield response.json()
-        yield put({
-            type: T.USER_ADD_SUCCESSED,
-            payload: newUser.data
-        }) 
-    }catch(error){
-        yield put({
-            type: T.USER_ADD_FAILED,
-            payload: error.message
-        })
+      const res = yield call(loginAPI, action.data)
+      yield put({
+        type: LOGIN_SUCCEED,
+        data: res.data
+      })
+    } catch (err) {
+      yield put({
+        type: LOGIN_FAILED,
+        error: err.response.data
+      })
     }
-}
-function* watchAddUser(){
-    yield takeLatest(T.USER_ADD_REQUEST, addUser)
+  }
+export function* watchLogin(){
+    yield takeLatest(T.USER_ADD_REQUESTED, login)
 }

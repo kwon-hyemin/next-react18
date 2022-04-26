@@ -3,7 +3,6 @@ import { createWrapper } from 'next-redux-wrapper'
 import createSagaMiddleware from '@redux-saga/core'
 import rootSaga from './sagas/index.ts'
 import rootReducer from './reducers/index.ts'
-import * as _ from 'lodash'
 
 const isDev = process.env.NODE_ENV === 'development' 
 // const isProd = process.env.NODE_ENV === 'production' 

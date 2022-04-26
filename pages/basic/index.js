@@ -1,4 +1,2 @@
-export {default as Bmi} from 'basic/bmi'
-export {default as Calc} from 'basic/calc'
-export {default as Counter} from 'basic/counter'
-export {default as Grade} from 'basic/grade'
+export {default as Layout} from 'components/Layout.js'
+export {default as Nav} from 'components/Nav.js'
